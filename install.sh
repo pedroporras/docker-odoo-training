@@ -41,7 +41,7 @@ su - ${USER} -c "git clone --single-branch --depth=10 https://github.com/odoo/od
 # Install odoo dependencies for py2 and py3
 LC_ALL=C.UTF-8 LANG=C.UTF-8 python3.5 -m pip install -Ur /home/${USER}/odoo-repo/requirements.txt
 
-wget https://raw.githubusercontent.com/odoo/odoo/10.0/requirements.txt -O /tmp/req10.txt
+wget https://raw.githubusercontent.com/pedroporras/docker-odoo-training/master/requirements.txt -O /tmp/req10.txt
 python2.7 -m pip install -Ur /tmp/req10.txt
 rm /tmp/req10.txt
 
