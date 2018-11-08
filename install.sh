@@ -42,6 +42,8 @@ su - ${USER} -c "git clone -b ${ODOO_VERSION} --single-branch --depth=10 https:/
 
 # Install odoo dependencies for py2 and py3
 LC_ALL=C.UTF-8 LANG=C.UTF-8 python3.5 -m pip install -Ur /home/${USER}/odoo-repo/requirements.txt
+wget https://raw.githubusercontent.com/pedroporras/docker-odoo-training/master/missed_requirement.txt -O /tmp/missing_requirements.txt
+pip install -r /tmp/missing_requirements.txt
 
 wget https://raw.githubusercontent.com/pedroporras/docker-odoo-training/master/requirements.txt -O /tmp/req10.txt
 python2.7 -m pip install -Ur /tmp/req10.txt
