@@ -14,6 +14,7 @@ apt-get install -y python-pip python3-pip libxml2-dev libxslt-dev libevent-dev \
     libssl-dev python-dev python3-dev \
     curl wget unzip locales tree sudo \
     tmux vim wkhtmltopdf git
+apt-get install sassc
 
 # Create user of the Operating System.
 useradd -d /home/${USER} -m -s /bin/bash -p ${USER}pwd ${USER}
