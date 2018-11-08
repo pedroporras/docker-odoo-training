@@ -37,8 +37,10 @@ pg_createcluster 9.5 main95 -e=utf8 || true
 /etc/init.d/postgresql start
 su - postgres -c "createuser -s ${USER}"
 
-# Download odoo
+# Download odoo and create addon-extra directory
 su - ${USER} -c "git clone -b ${ODOO_VERSION} --single-branch --depth=10 https://github.com/odoo/odoo.git odoo-repo"
+mkdir /home/${USER}/odoo-repo/addons-extra
+chown -R ${USER} addons-extra
 
 # Install odoo dependencies for py2 and py3
 LC_ALL=C.UTF-8 LANG=C.UTF-8 python3.5 -m pip install -Ur /home/${USER}/odoo-repo/requirements.txt
@@ -77,3 +79,4 @@ set spelllang=en,es
 """ >> /home/${USER}/.vimrc
 sed -i 's/ set mouse\=a/\"set mouse\=a/g' /home/${USER}/.vimrc
 sed -i "s/let g:neocomplete#enable_at_startup = 1/let g:neocomplete#enable_at_startup = 0/g" /home/${USER}/.vimrc
+
