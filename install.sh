@@ -40,7 +40,7 @@ su - postgres -c "createuser -s ${USER}"
 # Download odoo and create addon-extra directory
 su - ${USER} -c "git clone -b ${ODOO_VERSION} --single-branch --depth=10 https://github.com/odoo/odoo.git odoo-repo"
 mkdir /home/${USER}/odoo-repo/addons-extra
-chown -R ${USER} addons-extra
+chown -R ${USER} /home/${USER}/odoo-repo/addons-extra
 
 # Install odoo dependencies for py2 and py3
 LC_ALL=C.UTF-8 LANG=C.UTF-8 python3.5 -m pip install -Ur /home/${USER}/odoo-repo/requirements.txt
