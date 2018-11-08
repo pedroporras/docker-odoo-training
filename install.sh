@@ -6,6 +6,7 @@ chmod +x install.sh
 ./install.sh myusros  # Change 'myusros' to use your custom OS' user name
 """
 export USER=$1
+export ODOO_VERSION=$2
 
 apt-get update
 apt-get install -y python-pip python3-pip libxml2-dev libxslt-dev libevent-dev \
@@ -36,7 +37,7 @@ pg_createcluster 9.5 main95 -e=utf8 || true
 su - postgres -c "createuser -s ${USER}"
 
 # Download odoo
-su - ${USER} -c "git clone --single-branch --depth=10 https://github.com/odoo/odoo.git odoo-repo"
+su - ${USER} -c "git clone -b ${ODOO_VERSION} --single-branch --depth=10 https://github.com/odoo/odoo.git odoo-repo"
 
 # Install odoo dependencies for py2 and py3
 LC_ALL=C.UTF-8 LANG=C.UTF-8 python3.5 -m pip install -Ur /home/${USER}/odoo-repo/requirements.txt
