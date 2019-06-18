@@ -43,7 +43,9 @@ mkdir /home/${USER}/odoo-repo/addons-extra
 chown -R ${USER} /home/${USER}/odoo-repo/addons-extra
 
 # Install odoo dependencies for py2 and py3
-LC_ALL=C.UTF-8 LANG=C.UTF-8 python3.5 -m pip install -Ur /home/${USER}/odoo-repo/requirements.txt
+LC_ALL=C.UTF-8 LANG=C.UTF-8
+wget https://raw.githubusercontent.com/pedroporras/docker-odoo-training/master/requirements.txt -O /tmp/requirements.txt
+python3.6 -m pip install -Ur /tmp/requirements.txt
 wget https://raw.githubusercontent.com/pedroporras/docker-odoo-training/master/missed_requirement.txt -O /tmp/missing_requirements.txt
 pip install -r /tmp/missing_requirements.txt
 
@@ -58,7 +60,7 @@ npm install -g less
 
 # Install python tools
 python2.7 -m pip install -U bpython
-python3.5 -m pip install -U bpython
+python3.6 -m pip install -U bpython
 
 # configure vim IDE
 git clone --depth=1 --single-branch https://github.com/spf13/spf13-vim.git /tmp/spf13-vim
